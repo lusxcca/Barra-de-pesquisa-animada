@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Lucas Bizarria">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <title>Barra de pesquisa animada</title>
+</head>
+<body>
+    <div class="search-box">
+        <input type="text" placeholder="Digite para pesquisar...">
+        <div class="search-btn">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="cancel-btn">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="search-data"></div>
+    </div>
+    <script>
+        const searchBtn = document.querySelector(".search-btn");
+        const cancelBtn = document.querySelector(".cancel-btn");
+        const searchBox = document.querySelector(".search-box");
+        const searchInput = document.querySelector("input");
+        const searchData = document.querySelector(".search-data");
+        searchBtn.onclick = () => {
+            searchBox.classList.add("active");
+            searchInput.classList.add("active");
+            searchBtn.classList.add("active");
+            cancelBtn.classList.add("active");
+            if(searchInput.value != ""){
+                let values = searchInput.value;
+                searchData.classList.remove("active");
+                searchData.innerHTML = "Você apenas digitou " + "<span style='font-weight: 500;'>" + values + "</span>";
+            }else{
+                searchData.innerHTML = "";
+            }
+        }
+        cancelBtn.onclick = () => {
+            searchBox.classList.remove("active");
+            searchInput.classList.remove("active");
+            searchBtn.classList.remove("active");
+            cancelBtn.classList.remove("active");
+            searchData.classList.add("active");
+            searchInput.value = "";
+        }
+    </script>
+</body>
+</html>
